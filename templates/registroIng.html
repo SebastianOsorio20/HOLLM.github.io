@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/registroIng.css')}}">
+{% extends "base_form.html" %}
+{% block titulo %} Cleaning Cities Registro {% endblock %}
+{% block H %} Registro {% endblock %}
+{% block contenido %}
+    <div class="menu-form">
+        <form class="formulario-regis">
+            <div class="name">
+                <input type="text" name="nombres" placeholder="Nombre completo">
+            </div>
+            <div class="email">
+                <input type="text" name="correo" placeholder="Correo">
+            </div>
+            <div class="password">
+                <input type="password" name="contrasenia" placeholder="Contraseña">
+            </div>
+            <div class="gendre">
+                <select name="genero">
+                    <option value="elige tu genero" >Elige tu género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+            </div>
+            <div class="birthdate">
+                <label>Fecha de nacimiento</label>
+                <input type="date" name="nacimiento">
+            </div>
+            <div class="indentity">
+                <input type="text" name="dni" placeholder="DNI">
+            </div>
+            <div class="document">
+                <label for="file">Elige el archivo a cargar</label>
+                <input type="file" id="archivo" name="file" multiple>
+                <input type="button">
+            </div>
+            <div class="singup">
+                <button>Registrate</button>
+            </div>
+        </form>
+    </div>
+    {% endblock %}

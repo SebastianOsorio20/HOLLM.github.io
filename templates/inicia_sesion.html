@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/registro.css')}}">
+{% extends "base_form.html" %}
+{% block titulo %} Cleaning Cities Inicia {% endblock %}
+{% block H %} Inicio de sesión {% endblock %}
+{% block contenido %}
+<div class="menu-form" >
+    <form action="/inicia_sesion">
+        <div class="email">
+            <input type="text" name="correo" placeholder="Correo">
+        </div>
+        <div class="password">
+            <input type="password" name="contrasenia" placeholder="Contraseña">
+        </div>
+        <div class="singup">
+            <button type="submit">Iniciar sesión</button>
+        </div>
+        <div class="otherregister">
+            <label>Registrate</label>
+            <button><a href="/registro" target="_parent">Ingresar</a></button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -3,10 +3,10 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 # MySQL connection
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = '34.224.103.212'
+app.config['MYSQL_USER'] = 'support'
 app.config['MYSQL_PASSWORD'] = 'sistemas20.'
-app.config['MYSQL_DB'] = 'CCitiesData'
+app.config['MYSQL_DB'] = 'ccities_data'
 mysql = MySQL(app)
 
 #secret clave
@@ -14,24 +14,31 @@ app.secret_key = 'HOLLM'
 
 @app.route('/')
 def home():
-    return "Holaaa"
+    return render_template('index.html')
+@app.route('/registro')
+def registro():
+    return render_template('registro.html')
 
-@app.route('/add_usuarios1')
+@app.route('/iniciar_sesion')
+def inicia_sesion():
+    return render_template('inicia_sesion.html')
+
+@app.route('/add_usuarios1', methods=['POST'])
 def add_usuarios1():
-    """if request.method == 'POST': #Define método de envío
-        nombre = request.form['nombre'] # request.form recoge datos de formulario
+    if request.method == 'POST': #Define método de envío
+        nombre = request.form['nombres'] # request.form recoge datos de formulario
         correo = request.form['correo']
         contrasenia = request.form['contrasenia']
         genero = request.form['genero']
         nacimiento = request.form['nacimiento']
         
         cur = mysql.connection.cursor() #genera conexion DB SQL
-        cur.execute('INSERT INTO usuarios_vecinos (nombre, correo, contrasenia,genero, nacimiento) VALUES (%s, %s, %s,%s,%s)', 
-        (nombre, correo, contrasenia,genero, nacimiento)) # ejecuta comando SLQ datos recogidos del form
+        cur.execute('INSERT INTO usuario_vecinos (nombre, correo, contrasenia, genero, nacimiento) VALUES (%s,%s,%s,%s,%s)', 
+        (nombre, correo, contrasenia, genero, nacimiento)) # ejecuta comando SLQ datos recogidos del form
         mysql.connection.commit() # Guarda cambios en DB
-        flash('Usuario registrado')
-        return redirect(url_for('add_usuario1'))"""
-    return render_template('registro.html')
+        flash('Client Added Succesfully')
+        return redirect(url_for('home')) #Redirecciona a pagina Index
+    #return render_template('registro.html')
 
 @app.route('/add_usuarios2')
 def add_usuarios2():
@@ -39,4 +46,4 @@ def add_usuarios2():
 
 
 if __name__=='__main__':
-    app.run(port=3000, debug = True)
+    app.run(port=5000, debug = True)

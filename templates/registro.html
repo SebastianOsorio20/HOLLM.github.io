@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/registro.css')}}">
+{% extends "base_form.html" %}
+{% block titulo %} Cleaning Cities Registro {% endblock %}
+{% block H %} Registro {% endblock %}
+{% block contenido %}
+<div class="menu-form" >
+        <div class="mensajito">
+            {% with messages = get_flashed_messages() %} 
+            {% if messages%} 
+            {% for message in messages %}
+            {{message}}
+            {% endfor%}
+            {% endif%}
+            {% endwith %}
+        </div>
+        
+
+        <form action="/add_usuarios1" method="POST">
+            <div class="name">
+                <input type="text" name="nombres" placeholder="Nombre completo">
+            </div>
+            <div class="email">
+                <input type="text" name="correo" placeholder="Correo">
+            </div>
+            <div class="password">
+                <input type="password" name="contrasenia" placeholder="Contraseña">
+            </div>
+            <div class="gendre">
+                <input type="text" name="genero" placeholder="Genero">
+                <!--<select name="genero">
+                    <option value="elige tu genero" >Elige tu género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>-->
+            </div>
+            <div class="birthdate">
+                <!--<label>Fecha de nacimiento</label>
+                <input type="date" name="nacimiento">-->
+                <label>Formato: dd/mm/aaaa</label>
+                <input type="text" name="nacimiento" placeholder="Fecha de nacimiento">
+            </div>
+            <div class="singup">
+                <button type="submit" onclick="register">Registrate</button>
+            </div>
+
+            <div class="otherregister">
+                <label>¿Eres ingeniero?</label>
+                <button><a href="/add_usuarios2" target="_parent">Ingresar</a></button>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
